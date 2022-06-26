@@ -6,11 +6,15 @@ public class MyFirstProgram {
         // keyword new - creation of object with a specified type
         Point p1 = new Point(2,-3);
         Point p2 = new Point(-2,0);
-        System.out.println("The distance between specified points is " + distance(p1, p2));
+        System.out.println(p1.distance(p1, p2));
+
+        Point p3 = new Point(1,1);
+        Point p4 = new Point(1,1);
+        System.out.println(p3.distance(p3, p4));
+
+        Point p5 = new Point(2,3);
+        Point p6 = new Point(3,4);
+        System.out.println(p3.distance(p5, p6));
     }
 
-    // функция для вычисления
-    public static double distance(Point p1, Point p2) {
-        return Math.sqrt((Math.pow((p1.x - p2.x), 2) + Math.pow((p1.y - p2.y), 2)));
-    }
 }
