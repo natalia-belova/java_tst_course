@@ -14,6 +14,7 @@ public class ApplicationManager {
 
     public WebDriver wd;
 
+    private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
 
     public void init() {
@@ -22,6 +23,7 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         gotoMainPage();
         groupHelper = new GroupHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
         login("admin","secret");
     }
 
@@ -33,10 +35,6 @@ public class ApplicationManager {
       wd.findElement(By.name("user")).sendKeys(username);
       wd.findElement(By.name("pass")).sendKeys(password);
       wd.findElement(By.xpath("//input[@value='Login']")).click();
-    }
-
-    public void gotoGroupsList() {
-      wd.findElement(By.linkText("groups")).click();
     }
 
     public void stop() {
@@ -99,5 +97,9 @@ public class ApplicationManager {
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
+    }
+
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
