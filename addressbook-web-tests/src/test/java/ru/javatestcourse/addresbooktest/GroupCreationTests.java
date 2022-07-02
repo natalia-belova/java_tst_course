@@ -12,11 +12,11 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-    gotoHomePage();
+    gotoMainPage();
     login("admin","secret");
   }
 
-  private void gotoHomePage() {
+  private void gotoMainPage() {
     wd.get("http://localhost/addressbook/addressbook/");
   }
 
