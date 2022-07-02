@@ -14,6 +14,10 @@ public class GroupCreationTests {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/addressbook/");
+    login();
+  }
+
+  private void login() {
     wd.findElement(By.name("user")).sendKeys("admin");
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.xpath("//input[@value='Login']")).click();
@@ -21,22 +25,46 @@ public class GroupCreationTests {
 
   @Test
   public void testGroupCreation() throws Exception {
-    wd.findElement(By.linkText("groups")).click();
-    wd.findElement(By.name("new")).click();
+    gotoGroupCreation();
+    initiateNewGroup();
+    enterGroupFormValues();
+    submitGroupForm();
+    gotoGroupsPage();
+  }
+
+  private void gotoGroupsPage() {
+    wd.findElement(By.linkText("group page")).click();
+  }
+
+  private void submitGroupForm() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  private void enterGroupFormValues() {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).sendKeys("test1");
     wd.findElement(By.name("group_header")).click();
     wd.findElement(By.name("group_header")).sendKeys("test2");
     wd.findElement(By.name("group_footer")).click();
     wd.findElement(By.name("group_footer")).sendKeys("test3");
-    wd.findElement(By.name("submit")).click();
-    wd.findElement(By.linkText("group page")).click();
+  }
+
+  private void initiateNewGroup() {
+    wd.findElement(By.name("new")).click();
+  }
+
+  private void gotoGroupCreation() {
+    wd.findElement(By.linkText("groups")).click();
   }
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
-    wd.findElement(By.linkText("Logout")).click();
+    logout();
     wd.quit();
+  }
+
+  private void logout() {
+    wd.findElement(By.linkText("Logout")).click();
   }
 
   private boolean isElementPresent(By by) {
