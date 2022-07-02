@@ -3,7 +3,6 @@ package ru.javatestcourse.addresbooktest.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.javatestcourse.addresbooktest.models.ContactObject;
 //import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -37,7 +36,7 @@ public class ApplicationManager {
         wd.quit();
     }
 
-    public void clickHomePage() {
+    public void returnToHomePage() {
         wd.findElement(By.linkText("home page")).click();
     }
 

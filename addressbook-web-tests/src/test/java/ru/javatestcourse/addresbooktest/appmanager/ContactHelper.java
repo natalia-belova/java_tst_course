@@ -14,6 +14,17 @@ public class ContactHelper  extends BaseHelper {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
+    public void clickEditContact() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void deleteContact() {
+        click(By.xpath("//div[@id='content']/form[2]/input[2]"));
+    }
+
+    public void updateContact() {
+        click(By.name("update"));
+    }
     public void enterNewContactData(ContactObject contactObject) {
         type(By.name("firstname"), contactObject.getFirst_name());
         type(By.name("lastname"), contactObject.getLast_name());

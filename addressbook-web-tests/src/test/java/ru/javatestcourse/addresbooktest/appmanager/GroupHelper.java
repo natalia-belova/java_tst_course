@@ -18,8 +18,16 @@ public class GroupHelper extends BaseHelper {
         click(By.name("delete"));
     }
 
+    public void clickEditGroup() {
+        click(By.name("edit"));
+    }
+
     public void submitGroupForm() {
         click(By.name("submit"));
+    }
+
+    public void updateGroupForm() {
+        click(By.name("update"));
     }
 
     public void enterGroupFormValues(GroupObject groupObject) {
