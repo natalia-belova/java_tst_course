@@ -11,7 +11,7 @@ import ru.javatestcourse.addresbooktest.models.GroupObject;
 
 import java.time.Duration;
 
-public class ApplicationManager {
+public class ApplicationManager extends GroupHelper {
     public WebDriver wd;
 
     public void init() {
@@ -67,12 +67,9 @@ public class ApplicationManager {
     }
 
     public void clickHomePage() {
-        clickLinkWithText("home page");
+        wd.findElement(By.linkText("home page")).click();
     }
 
-    public void clickLinkWithText(String linkText) {
-        wd.findElement(By.linkText(linkText)).click();
-    }
 
     public void clickEnterContact() {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
@@ -97,7 +94,7 @@ public class ApplicationManager {
     }
 
     public void initiateNewContactCreation() {
-        clickLinkWithText("add new");
+        wd.findElement(By.linkText("add new")).click();
     }
 
     public void logout() {
