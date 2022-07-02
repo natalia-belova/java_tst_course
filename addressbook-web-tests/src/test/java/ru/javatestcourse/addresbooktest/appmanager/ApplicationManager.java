@@ -3,16 +3,13 @@ package ru.javatestcourse.addresbooktest.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.javatestcourse.addresbooktest.models.ContactObject;
-import ru.javatestcourse.addresbooktest.models.GroupObject;
 //import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
 public class ApplicationManager extends GroupHelper {
-    public WebDriver wd;
 
     public void init() {
         wd = new FirefoxDriver();
@@ -30,31 +27,6 @@ public class ApplicationManager extends GroupHelper {
       wd.findElement(By.name("user")).sendKeys(username);
       wd.findElement(By.name("pass")).sendKeys(password);
       wd.findElement(By.xpath("//input[@value='Login']")).click();
-    }
-
-    public void gotoGroupsPage() {
-      wd.findElement(By.linkText("group page")).click();
-    }
-
-    public void clickDeleteGroup() {
-        wd.findElement(By.name("delete")).click();
-    }
-
-    public void submitGroupForm() {
-      wd.findElement(By.name("submit")).click();
-    }
-
-    public void enterGroupFormValues(GroupObject groupObject) {
-      wd.findElement(By.name("group_name")).click();
-      wd.findElement(By.name("group_name")).sendKeys(groupObject.getName());
-      wd.findElement(By.name("group_header")).click();
-      wd.findElement(By.name("group_header")).sendKeys(groupObject.getHeader());
-      wd.findElement(By.name("group_footer")).click();
-      wd.findElement(By.name("group_footer")).sendKeys(groupObject.getFooter());
-    }
-
-    public void initiateNewGroup() {
-      wd.findElement(By.name("new")).click();
     }
 
     public void gotoGroupsList() {
@@ -99,10 +71,6 @@ public class ApplicationManager extends GroupHelper {
 
     public void logout() {
       wd.findElement(By.linkText("Logout")).click();
-    }
-
-    public void selectGroupByOrder(String groupOrder) {
-        wd.findElement(By.xpath("//div[@id='content']/form/span[" + groupOrder + "]/input")).click();
     }
 
     public boolean isElementPresent(By by) {

@@ -8,7 +8,7 @@ public class GroupDeletionTests extends TestBase {
     app.gotoGroupsList();
     app.selectGroupByOrder("1");
     app.clickDeleteGroup();
-    app.gotoGroupsPage();
+    app.returnToGroupsPage();
 
   }
 
