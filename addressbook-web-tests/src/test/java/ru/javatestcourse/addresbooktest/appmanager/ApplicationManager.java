@@ -1,18 +1,20 @@
-package ru.javatestcourse.addresbooktest;
+package ru.javatestcourse.addresbooktest.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.javatestcourse.addresbooktest.models.ContactObject;
+import ru.javatestcourse.addresbooktest.models.GroupObject;
 //import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
 public class ApplicationManager {
-    private WebDriver wd;
+    public WebDriver wd;
 
-    protected void init() {
+    public void init() {
         wd = new FirefoxDriver();
         //wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -20,21 +22,21 @@ public class ApplicationManager {
         login("admin","secret");
     }
 
-    private void gotoMainPage() {
+    public void gotoMainPage() {
       wd.get("http://localhost/addressbook/addressbook/");
     }
 
-    private void login(String username, String password) {
+    public void login(String username, String password) {
       wd.findElement(By.name("user")).sendKeys(username);
       wd.findElement(By.name("pass")).sendKeys(password);
       wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    protected void gotoGroupsPage() {
+    public void gotoGroupsPage() {
       wd.findElement(By.linkText("group page")).click();
     }
 
-    protected void clickDeleteGroup() {
+    public void clickDeleteGroup() {
         wd.findElement(By.name("delete")).click();
     }
 
@@ -42,7 +44,7 @@ public class ApplicationManager {
       wd.findElement(By.name("submit")).click();
     }
 
-    protected void enterGroupFormValues(GroupObject groupObject) {
+    public void enterGroupFormValues(GroupObject groupObject) {
       wd.findElement(By.name("group_name")).click();
       wd.findElement(By.name("group_name")).sendKeys(groupObject.getName());
       wd.findElement(By.name("group_header")).click();
@@ -51,32 +53,32 @@ public class ApplicationManager {
       wd.findElement(By.name("group_footer")).sendKeys(groupObject.getFooter());
     }
 
-    protected void initiateNewGroup() {
+    public void initiateNewGroup() {
       wd.findElement(By.name("new")).click();
     }
 
-    protected void gotoGroupsList() {
+    public void gotoGroupsList() {
       wd.findElement(By.linkText("groups")).click();
     }
 
-    protected void stop() {
+    public void stop() {
         logout();
         wd.quit();
     }
 
-    protected void clickHomePage() {
+    public void clickHomePage() {
         clickLinkWithText("home page");
     }
 
-    private void clickLinkWithText(String linkText) {
+    public void clickLinkWithText(String linkText) {
         wd.findElement(By.linkText(linkText)).click();
     }
 
-    protected void clickEnterContact() {
+    public void clickEnterContact() {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
-    protected void enterNewContactData(ContactObject contactObject) {
+    public void enterNewContactData(ContactObject contactObject) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys(contactObject.getFirst_name());
@@ -94,19 +96,19 @@ public class ApplicationManager {
         wd.findElement(By.name("email")).sendKeys(contactObject.getEmail());
     }
 
-    protected void initiateNewContactCreation() {
+    public void initiateNewContactCreation() {
         clickLinkWithText("add new");
     }
 
-    private void logout() {
+    public void logout() {
       wd.findElement(By.linkText("Logout")).click();
     }
 
-    protected void selectGroupByOrder(String groupOrder) {
+    public void selectGroupByOrder(String groupOrder) {
         wd.findElement(By.xpath("//div[@id='content']/form/span[" + groupOrder + "]/input")).click();
     }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
       try {
         wd.findElement(by);
         return true;
@@ -115,7 +117,7 @@ public class ApplicationManager {
       }
     }
 
-    private boolean isAlertPresent() {
+    public boolean isAlertPresent() {
       try {
         wd.switchTo().alert();
         return true;

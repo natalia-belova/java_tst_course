@@ -1,4 +1,4 @@
-package ru.javatestcourse.addresbooktest;
+package ru.javatestcourse.addresbooktest.models;
 
 public class ContactObject {
     private final String last_name;

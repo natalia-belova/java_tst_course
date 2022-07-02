@@ -1,6 +1,7 @@
-package ru.javatestcourse.addresbooktest;
+package ru.javatestcourse.addresbooktest.tests;
 
 import org.testng.annotations.*;
+import ru.javatestcourse.addresbooktest.models.ContactObject;
 
 
 public class ContactCreationTests extends TestBase {
