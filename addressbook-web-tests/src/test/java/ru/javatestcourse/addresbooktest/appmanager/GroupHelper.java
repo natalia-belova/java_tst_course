@@ -4,42 +4,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.javatestcourse.addresbooktest.models.GroupObject;
 
-public class GroupHelper {
-    private WebDriver wd;
+public class GroupHelper extends BaseHelper {
 
     public GroupHelper(WebDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void returnToGroupsPage() {
-        wd.findElement(By.linkText("group page")).click();
+        click(By.linkText("group page"));
     }
 
     public void clickDeleteGroup() {
-        wd.findElement(By.name("delete")).click();
+        click(By.name("delete"));
     }
 
     public void submitGroupForm() {
-        wd.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void enterGroupFormValues(GroupObject groupObject) {
-        wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(groupObject.getName());
-        wd.findElement(By.name("group_header")).click();
-        wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys(groupObject.getHeader());
-        wd.findElement(By.name("group_footer")).click();
-        wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys(groupObject.getFooter());
+        type(By.name("group_name"), groupObject.getName());
+        type(By.name("group_header"), groupObject.getHeader());
+        type(By.name("group_footer"), groupObject.getFooter());
     }
 
     public void initiateNewGroup() {
-        wd.findElement(By.name("new")).click();
+        click(By.name("new"));
     }
 
     public void selectGroupByOrder(String groupOrder) {
-        wd.findElement(By.xpath("//div[@id='content']/form/span[" + groupOrder + "]/input")).click();
+        click(By.xpath("//div[@id='content']/form/span[" + groupOrder + "]/input"));
     }
 }
