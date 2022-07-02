@@ -1,5 +1,6 @@
 package ru.javatestcourse.addresbooktest;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
@@ -12,9 +13,13 @@ public class GroupCreationTests {
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/addressbook/");
+    wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    gotoHomePage();
     login();
+  }
+
+  private void gotoHomePage() {
+    wd.get("http://localhost/addressbook/addressbook/");
   }
 
   private void login() {
