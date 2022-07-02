@@ -40,7 +40,7 @@ public class ApplicationManager {
         wd.findElement(By.name("delete")).click();
     }
 
-    protected void submitGroupForm() {
+    public void submitGroupForm() {
       wd.findElement(By.name("submit")).click();
     }
 
