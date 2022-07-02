@@ -1,12 +1,10 @@
 package ru.javatestcourse.addresbooktest;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
 public class GroupCreationTests {
   private WebDriver wd;
@@ -15,16 +13,16 @@ public class GroupCreationTests {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     gotoHomePage();
-    login();
+    login("admin","secret");
   }
 
   private void gotoHomePage() {
     wd.get("http://localhost/addressbook/addressbook/");
   }
 
-  private void login() {
-    wd.findElement(By.name("user")).sendKeys("admin");
-    wd.findElement(By.name("pass")).sendKeys("secret");
+  private void login(String username, String password) {
+    wd.findElement(By.name("user")).sendKeys(username);
+    wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
@@ -32,7 +30,7 @@ public class GroupCreationTests {
   public void testGroupCreation() throws Exception {
     gotoGroupCreation();
     initiateNewGroup();
-    enterGroupFormValues();
+    enterGroupFormValues(new GroupObject("test1", "test2", "test3"));
     submitGroupForm();
     gotoGroupsPage();
   }
@@ -45,13 +43,13 @@ public class GroupCreationTests {
     wd.findElement(By.name("submit")).click();
   }
 
-  private void enterGroupFormValues() {
+  private void enterGroupFormValues(GroupObject groupObject) {
     wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("group_name")).sendKeys("test1");
+    wd.findElement(By.name("group_name")).sendKeys(groupObject.getName());
     wd.findElement(By.name("group_header")).click();
-    wd.findElement(By.name("group_header")).sendKeys("test2");
+    wd.findElement(By.name("group_header")).sendKeys(groupObject.getHeader());
     wd.findElement(By.name("group_footer")).click();
-    wd.findElement(By.name("group_footer")).sendKeys("test3");
+    wd.findElement(By.name("group_footer")).sendKeys(groupObject.getFooter());
   }
 
   private void initiateNewGroup() {
