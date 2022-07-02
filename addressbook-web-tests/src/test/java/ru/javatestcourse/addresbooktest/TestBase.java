@@ -5,6 +5,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -16,6 +17,7 @@ public class TestBase {
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
       wd = new FirefoxDriver();
+      //wd = new ChromeDriver();
       wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
       gotoMainPage();
       login("admin","secret");
