@@ -22,7 +22,7 @@ public class SessionHelper extends BaseHelper {
     }
 
     public void gotoMainPage() {
-        wd.get("http://localhost/addressbook/addressbook/");
+        wd.get("http://localhost/addressbook/");
     }
 }
 
