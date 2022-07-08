@@ -23,5 +23,22 @@ public class EquationTests {
         Assert.assertEquals(e.rootQuantity(), 1);
     }
 
+    @Test
+    public void testLin1() {
+        Equation e = new Equation(0, 2, 1);
+        Assert.assertEquals(e.rootQuantity(), 1);
+    }
+
+    @Test
+    public void testLin2() {
+        Equation e = new Equation(0, 0, 1);
+        Assert.assertEquals(e.rootQuantity(), 0);
+    }
+
+    @Test
+    public void testLin3() {
+        Equation e = new Equation(0, 0, 0);
+        Assert.assertEquals(e.rootQuantity(), -1);
+    }
 
 }
