@@ -3,12 +3,14 @@ package ru.javatestcourse.addresbooktest.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
 public class ApplicationManager {
 
+    private final String browser;
     public WebDriver wd;
 
     private NavigationHelper navigationHelper;
@@ -16,9 +18,16 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
 
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
+
     public void init() {
-        wd = new FirefoxDriver();
-//        wd = new ChromeDriver();
+        if (browser.equals(BrowserType.FIREFOX)) {
+            wd = new FirefoxDriver();
+        } else if (browser.equals(BrowserType.CHROME)) {
+            wd = new ChromeDriver();
+        }
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         groupHelper = new GroupHelper(wd);
@@ -26,9 +35,8 @@ public class ApplicationManager {
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
         sessionHelper.gotoMainPage();
-        sessionHelper.login("admin","secret");
+        sessionHelper.login("admin", "secret");
     }
-
 
 
     public void stop() {
@@ -39,9 +47,6 @@ public class ApplicationManager {
     public void returnToHomePage() {
         wd.findElement(By.linkText("home page")).click();
     }
-
-
-
 
 
     public GroupHelper getGroupHelper() {
