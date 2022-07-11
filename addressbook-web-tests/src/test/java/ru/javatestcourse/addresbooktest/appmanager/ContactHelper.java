@@ -47,5 +47,13 @@ public class ContactHelper extends BaseHelper {
     public void initiateNewContactCreation() {
         click(By.linkText("add new"));
     }
+
+    public void clickDeleteContactInList() {
+        click(By.xpath("//input[@value='Delete']"));
+    }
+
+    public void checkContactByOrderInList(int order) {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[" + (order + 1) + "]/td/input"));
+    }
 }
 
