@@ -43,4 +43,15 @@ public class GroupHelper extends BaseHelper {
     public void selectGroupByOrder(String groupOrder) {
         click(By.xpath("//div[@id='content']/form/span[" + groupOrder + "]/input"));
     }
+
+    public void createGroup(GroupObject group) {
+        initiateNewGroup();
+        enterGroupFormValues(group);
+        submitGroupForm();
+        returnToGroupsPage();
+    }
+
+    public boolean doesSomeGroupExists() {
+        return isElementPresent(By.xpath("//div[@id='content']/form/span[1]/input"));
+    }
 }

@@ -9,18 +9,14 @@ public class ContactCreationTests extends TestBase {
     @Test
 //    name, address, phone, email are specified
     public void testContactCreation() throws Exception {
-        app.getcontactHelper().initiateNewContactCreation();
-        app.getcontactHelper().enterNewContactData(new ContactObject("Ivanov", "Ru, Spb", "123456789", "test@qa.com", "Ivan", "test1UPD"), true);
-        app.getcontactHelper().clickEnterContact();
+        app.getСontactHelper().createNewContact(new ContactObject("Ivanov", "Ru, Spb", "123456789", "test@qa.com", "Ivan", "test1UPD"));
         app.returnToHomePage();
     }
 
     @Test
 //    only first name is specified
     public void testContactCreation2() throws Exception {
-        app.getcontactHelper().initiateNewContactCreation();
-        app.getcontactHelper().enterNewContactData(new ContactObject(null, null, null, null, "Ivan", "[none]"), true);
-        app.getcontactHelper().clickEnterContact();
+        app.getСontactHelper().createNewContact(new ContactObject(null, null, null, null, "Ivan", "[none]"));
         app.returnToHomePage();
     }
 

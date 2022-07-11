@@ -7,16 +7,20 @@ public class ContactDeletionTests extends TestBase {
     @Test
 //    from contact details page
     public void testContactDeletion() throws Exception {
-        app.getcontactHelper().clickEditContact();
-        app.getcontactHelper().deleteContact();
+        app.getСontactHelper().createContactIfNoOneExists(new ContactObject(null, null, null, null, "Ivan", "[none]"));
+        app.getSessionHelper().gotoMainPage();
+        app.getСontactHelper().clickEditContact();
+        app.getСontactHelper().deleteContact();
     }
 
 
     @Test
 //    from contact list (home) page
     public void testContactDeletionFromList() throws Exception {
-        app.getcontactHelper().checkContactByOrderInList(1);
-        app.getcontactHelper().clickDeleteContactInList();
+        app.getСontactHelper().createContactIfNoOneExists(new ContactObject(null, null, null, null, "Ivan", "[none]"));
+        app.getSessionHelper().gotoMainPage();
+        app.getСontactHelper().checkContactByOrderInList(1);
+        app.getСontactHelper().clickDeleteContactInList();
         app.getNavigationHelper().acceptAlert();
     }
 }

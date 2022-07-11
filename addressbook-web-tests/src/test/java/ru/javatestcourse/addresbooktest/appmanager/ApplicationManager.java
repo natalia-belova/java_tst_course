@@ -59,7 +59,11 @@ public class ApplicationManager {
     }
 
 
-    public ContactHelper getcontactHelper() {
+    public ContactHelper getСontactHelper() {
         return contactHelper;
+    }
+
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
     }
 }

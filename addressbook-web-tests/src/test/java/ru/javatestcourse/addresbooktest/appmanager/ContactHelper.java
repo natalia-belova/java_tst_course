@@ -55,5 +55,23 @@ public class ContactHelper extends BaseHelper {
     public void checkContactByOrderInList(int order) {
         click(By.xpath("//table[@id='maintable']/tbody/tr[" + (order + 1) + "]/td/input"));
     }
+
+    public void createNewContact(ContactObject contact) {
+        initiateNewContactCreation();
+        enterNewContactData(contact, true);
+        clickEnterContact();
+    }
+
+//    public boolean doesAnyContactExists() {
+//        return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+//
+//    }
+
+    public void createContactIfNoOneExists(ContactObject contact) {
+        if (!isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"))) {
+            createNewContact(contact);
+        }
+    }
+
 }
 
