@@ -19,9 +19,16 @@ public class BaseHelper {
     }
 
     protected void type(By locator, String text) {
+//        if null value is used - no actions required
+//        if not-null - check if it is equal to the existing one (could be perf improvement)
         click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
+        if (text != null) {
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (!text.equals(existingText)) {
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(text);
+            }
+        }
     }
 
     public boolean isElementPresent(By by) {
