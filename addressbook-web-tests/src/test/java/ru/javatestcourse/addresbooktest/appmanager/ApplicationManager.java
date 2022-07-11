@@ -28,7 +28,8 @@ public class ApplicationManager {
         } else if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
         }
-        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+//        timeout can be increased in case of unstable elements loading
+        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);

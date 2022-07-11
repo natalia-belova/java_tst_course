@@ -2,9 +2,11 @@ package ru.javatestcourse.addresbooktest.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.javatestcourse.addresbooktest.models.ContactObject;
 
-public class ContactHelper  extends BaseHelper {
+public class ContactHelper extends BaseHelper {
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
@@ -25,12 +27,21 @@ public class ContactHelper  extends BaseHelper {
     public void updateContact() {
         click(By.name("update"));
     }
-    public void enterNewContactData(ContactObject contactObject) {
+
+    public void enterNewContactData(ContactObject contactObject, boolean creation) {
         type(By.name("firstname"), contactObject.getFirst_name());
         type(By.name("lastname"), contactObject.getLast_name());
         type(By.name("address"), contactObject.getAddress());
         type(By.name("home"), contactObject.getHome_phone());
         type(By.name("email"), contactObject.getEmail());
+//        select group if such control is presented on form (creation-only)
+        if (creation) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactObject.getGroup_name());
+        } else
+//        element should not be presented for non-creation action
+        {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
     }
 
     public void initiateNewContactCreation() {

@@ -10,7 +10,7 @@ public class ContactCreationTests extends TestBase {
 //    name, address, phone, email are specified
     public void testContactCreation() throws Exception {
         app.getcontactHelper().initiateNewContactCreation();
-        app.getcontactHelper().enterNewContactData(new ContactObject("Ivanov", "Ru, Spb", "123456789", "test@qa.com", "Ivan"));
+        app.getcontactHelper().enterNewContactData(new ContactObject("Ivanov", "Ru, Spb", "123456789", "test@qa.com", "Ivan", "test1UPD"), true);
         app.getcontactHelper().clickEnterContact();
         app.returnToHomePage();
     }
@@ -19,7 +19,7 @@ public class ContactCreationTests extends TestBase {
 //    only first name is specified
     public void testContactCreation2() throws Exception {
         app.getcontactHelper().initiateNewContactCreation();
-        app.getcontactHelper().enterNewContactData(new ContactObject(null, null, null, null, "Ivan"));
+        app.getcontactHelper().enterNewContactData(new ContactObject(null, null, null, null, "Ivan", "[none]"), true);
         app.getcontactHelper().clickEnterContact();
         app.returnToHomePage();
     }
