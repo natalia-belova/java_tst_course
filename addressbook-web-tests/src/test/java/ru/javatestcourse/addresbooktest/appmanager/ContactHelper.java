@@ -73,5 +73,9 @@ public class ContactHelper extends BaseHelper {
         }
     }
 
+    public int getContactsAmount() {
+        return wd.findElements(By.cssSelector(".center input")).size();
+    }
+
 }
 

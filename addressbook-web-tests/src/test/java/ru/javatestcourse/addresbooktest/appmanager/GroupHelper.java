@@ -54,4 +54,8 @@ public class GroupHelper extends BaseHelper {
     public boolean doesSomeGroupExists() {
         return isElementPresent(By.xpath("//div[@id='content']/form/span[1]/input"));
     }
+
+    public int getGroupCount() {
+        return wd.findElements(By.cssSelector(".group")).size();
+    }
 }

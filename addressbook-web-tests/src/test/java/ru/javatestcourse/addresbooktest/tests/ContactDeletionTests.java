@@ -1,5 +1,7 @@
 package ru.javatestcourse.addresbooktest.tests;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.javatestcourse.addresbooktest.models.ContactObject;
 
@@ -9,8 +11,12 @@ public class ContactDeletionTests extends TestBase {
     public void testContactDeletion() throws Exception {
         app.getСontactHelper().createContactIfNoOneExists(new ContactObject(null, null, null, null, "Ivan", "[none]"));
         app.getSessionHelper().gotoMainPage();
+        int before = app.getСontactHelper().getContactsAmount();
         app.getСontactHelper().clickEditContact();
         app.getСontactHelper().deleteContact();
+        app.getSessionHelper().gotoMainPage();
+        int after = app.getСontactHelper().getContactsAmount();
+        Assert.assertEquals(after, before - 1);
     }
 
 
@@ -19,8 +25,12 @@ public class ContactDeletionTests extends TestBase {
     public void testContactDeletionFromList() throws Exception {
         app.getСontactHelper().createContactIfNoOneExists(new ContactObject(null, null, null, null, "Ivan", "[none]"));
         app.getSessionHelper().gotoMainPage();
+        int before = app.getСontactHelper().getContactsAmount();
         app.getСontactHelper().checkContactByOrderInList(1);
         app.getСontactHelper().clickDeleteContactInList();
         app.getNavigationHelper().acceptAlert();
+        app.getSessionHelper().gotoMainPage();
+        int after = app.getСontactHelper().getContactsAmount();
+        Assert.assertEquals(after, before - 1);
     }
 }

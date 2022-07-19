@@ -22,9 +22,6 @@ public class SessionHelper extends BaseHelper {
     }
 
     public void gotoMainPage() {
-        if (!isElementPresent(By.id("maintable"))) {
-
-            wd.get("http://localhost/addressbook/");
-        }
+        wd.get("http://localhost/addressbook/");
     }
 }
