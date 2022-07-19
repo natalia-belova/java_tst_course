@@ -16,9 +16,9 @@ public class ContactHelper extends BaseHelper {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void clickEditContact() {
-        click(By.xpath("//img[@alt='Edit']"));
-    }
+    public void clickEditContactByOrder(int order) {
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(order-1).click();
+     }
 
     public void deleteContact() {
         click(By.xpath("//div[@id='content']/form[2]/input[2]"));
@@ -53,19 +53,13 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void checkContactByOrderInList(int order) {
-        click(By.xpath("//table[@id='maintable']/tbody/tr[" + (order + 1) + "]/td/input"));
+        wd.findElements(By.name("selected[]")).get(order-1).click();
     }
-
     public void createNewContact(ContactObject contact) {
         initiateNewContactCreation();
         enterNewContactData(contact, true);
         clickEnterContact();
     }
-
-//    public boolean doesAnyContactExists() {
-//        return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
-//
-//    }
 
     public void createContactIfNoOneExists(ContactObject contact) {
         if (!isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"))) {

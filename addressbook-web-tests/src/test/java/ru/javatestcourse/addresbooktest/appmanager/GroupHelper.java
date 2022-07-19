@@ -40,8 +40,8 @@ public class GroupHelper extends BaseHelper {
         click(By.name("new"));
     }
 
-    public void selectGroupByOrder(String groupOrder) {
-        click(By.xpath("//div[@id='content']/form/span[" + groupOrder + "]/input"));
+    public void selectGroupByOrder(int groupOrder) {
+        wd.findElements(By.name("selected[]")).get(groupOrder-1).click();
     }
 
     public void createGroup(GroupObject group) {

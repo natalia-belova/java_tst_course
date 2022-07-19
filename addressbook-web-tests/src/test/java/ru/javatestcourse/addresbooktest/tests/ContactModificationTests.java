@@ -10,7 +10,7 @@ public class ContactModificationTests extends TestBase {
         app.getСontactHelper().createContactIfNoOneExists(new ContactObject(null, null, null, null, "Ivan", "[none]"));
         app.getSessionHelper().gotoMainPage();
         int before = app.getСontactHelper().getContactsAmount();
-        app.getСontactHelper().clickEditContact();
+        app.getСontactHelper().clickEditContactByOrder(1);
         app.getСontactHelper().enterNewContactData(new ContactObject("IvanovUPD", "Ru, SpbUPD", "123456789UPD", "testUPD@qa.com", "IvanUPD", "test1UPD"), false);
         app.getСontactHelper().updateContact();
         app.returnToHomePage();

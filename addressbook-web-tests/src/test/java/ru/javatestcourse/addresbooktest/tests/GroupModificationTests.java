@@ -14,7 +14,7 @@ public class GroupModificationTests extends TestBase {
             app.getGroupHelper().createGroup(new GroupObject("test1", null, null));
         }
         int before = app.getGroupHelper().getGroupCount();
-        app.getGroupHelper().selectGroupByOrder("1");
+        app.getGroupHelper().selectGroupByOrder(1);
         app.getGroupHelper().clickEditGroup();
         app.getGroupHelper().enterGroupFormValues(new GroupObject("test1UPD", "test2UPD", "test3UPD"));
         app.getGroupHelper().updateGroupForm();
