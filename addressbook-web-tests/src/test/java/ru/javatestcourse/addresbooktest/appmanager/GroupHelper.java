@@ -45,7 +45,7 @@ public class GroupHelper extends BaseHelper {
     }
 
     public void selectGroupByOrder(int groupOrder) {
-        wd.findElements(By.name("selected[]")).get(groupOrder-1).click();
+        wd.findElements(By.name("selected[]")).get(groupOrder).click();
     }
 
     public void createGroup(GroupObject group) {

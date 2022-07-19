@@ -11,7 +11,7 @@ public class ContactDeletionTests extends TestBase {
         app.getСontactHelper().createContactIfNoOneExists(new ContactObject(null, null, null, null, "Ivan", "[none]"));
         app.getSessionHelper().gotoMainPage();
         int before = app.getСontactHelper().getContactsAmount();
-        app.getСontactHelper().clickEditContactByOrder(1);
+        app.getСontactHelper().clickEditContactByOrder(before - 1);
         app.getСontactHelper().deleteContact();
         app.getSessionHelper().gotoMainPage();
         int after = app.getСontactHelper().getContactsAmount();
@@ -25,7 +25,7 @@ public class ContactDeletionTests extends TestBase {
         app.getСontactHelper().createContactIfNoOneExists(new ContactObject(null, null, null, null, "Ivan", "[none]"));
         app.getSessionHelper().gotoMainPage();
         int before = app.getСontactHelper().getContactsAmount();
-        app.getСontactHelper().checkContactByOrderInList(1);
+        app.getСontactHelper().checkContactByOrderInList(before - 1);
         app.getСontactHelper().clickDeleteContactInList();
         app.getNavigationHelper().acceptAlert();
         app.getSessionHelper().gotoMainPage();

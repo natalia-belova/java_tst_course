@@ -15,7 +15,7 @@ public class GroupDeletionTests extends TestBase {
       app.getGroupHelper().createGroup(new GroupObject("test1", null, null));
     }
     List<GroupObject> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroupByOrder(1);
+    app.getGroupHelper().selectGroupByOrder(before.size() - 1);
     app.getGroupHelper().clickDeleteGroup();
     app.getGroupHelper().returnToGroupsPage();
     List<GroupObject> after = app.getGroupHelper().getGroupList();

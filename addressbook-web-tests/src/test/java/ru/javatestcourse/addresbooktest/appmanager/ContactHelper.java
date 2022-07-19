@@ -2,9 +2,14 @@ package ru.javatestcourse.addresbooktest.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.javatestcourse.addresbooktest.models.ContactObject;
+import ru.javatestcourse.addresbooktest.models.GroupObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
     public ContactHelper(WebDriver wd) {
@@ -17,7 +22,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void clickEditContactByOrder(int order) {
-        wd.findElements(By.xpath("//img[@alt='Edit']")).get(order-1).click();
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(order).click();
      }
 
     public void deleteContact() {
@@ -53,7 +58,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void checkContactByOrderInList(int order) {
-        wd.findElements(By.name("selected[]")).get(order-1).click();
+        wd.findElements(By.name("selected[]")).get(order).click();
     }
     public void createNewContact(ContactObject contact) {
         initiateNewContactCreation();
@@ -71,5 +76,15 @@ public class ContactHelper extends BaseHelper {
         return wd.findElements(By.cssSelector(".center input")).size();
     }
 
+//    public List<ContactObject> getContactsList() {
+//        List<ContactObject> contacts = new ArrayList<ContactObject>();
+//        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+//        for (WebElement element : elements) {
+//            String name = element.getText();
+//            ContactObject contact = new ContactObject(name, null, null, null, null, null);
+//            contacts.add(contact);
+//        }
+//        return contacts;
+//    }
 }
 
