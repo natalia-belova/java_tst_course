@@ -1,5 +1,7 @@
 package ru.javatestcourse.addresbooktest.models;
 
+import java.util.Objects;
+
 public class GroupObject {
     private final String name;
     private final String header;
@@ -21,5 +23,25 @@ public class GroupObject {
 
     public String getFooter() {
         return footer;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupObject{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupObject that = (GroupObject) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
