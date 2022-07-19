@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Collections {
-//    String[] args - массив
+    //    String[] args - массив
     public static void main(String[] args) {
 //        массив
         String[] langs = {"Java", "Python", "Go", "JS"};
@@ -15,8 +15,14 @@ public class Collections {
         languages.add("Python");
 //        короткая запись для списка
         List<String> languages2 = Arrays.asList("Java", "Python", "Go", "JS");
+
+        // тут программа пробегает по всем элементам сама
         for (String l : languages2) {
             System.out.println(l);
+        }
+// тут мы прописываем счетчик самостоятельно (менее эстетичная форма)
+        for (int i = 0; i < languages2.size(); i++) {
+            System.out.println("I'd like to study " + languages2.get(i));
         }
     }
 }
